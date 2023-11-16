@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Funcionalidades basicas de validacion de usuarios</title>
+</head>
+<body>
+    <!-- Formulario de inicio de sesión -->
+    <form method="post" action="index.php">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required><br>
+
+        <input type="submit" name="login" value="Iniciar Sesión">
+    </form>
+
+    <!-- Interfaz del usuario autenticado -->
+    <p>Bienvenido, <?php echo $_SESSION['usuario']; ?>!</p>
+    <p>Tipo de usuario: <?php echo $_SESSION['tipo']; ?></p>
+    <a href="index.php?logout=true">Cerrar Sesión</a>
+
+    <?php
+    // Simulación de una base de datos de usuarios
+    $usuarios = array(
+        'usuario1' => array('contrasena' => 'pass1', 'tipo' => 'admin'),
+        'usuario2' => array('contrasena' => 'pass2', 'tipo' => 'usuario_normal')
+    );
+
+    session_start();
+
+    // Comprobación de inicio de sesión
+    if (isset($_POST['login'])) {
+        $usuario = $_POST['usuario'];
+        $contrasena = $_POST['contrasena'];
+
+        // Verificación de las credenciales del usuario
+        if (array_key_exists($usuario, $usuarios) && $usuarios[$usuario]['contrasena'] == $contrasena) {
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['tipo'] = $usuarios[$usuario]['tipo'];
+        } else {
+            echo "Credenciales incorrectas";
+        }
+    }
+
+    // Comprobación de cierre de sesión
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header("Location: index.php");
+        exit();
+    }
+
+    // Comprobación de autorización y redirección a la interfaz adecuada
+    if (isset($_SESSION['usuario'])) {
+        $tipoUsuario = $_SESSION['tipo'];
+
+        if ($tipoUsuario == 'admin') {
+            header("Location: interfaz_admin.php");
+        } elseif ($tipoUsuario == 'usuario_normal') {
+            header("Location: interfaz_usuario.php");
+        }
+    }
+    ?>
+
+</body>
+</html>
+
