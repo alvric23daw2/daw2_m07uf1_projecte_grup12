@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" action="login.php">
+        <input type="text" placeholder="Usuari" name="usuari"><br>
+        <input type="password" placeholder="Contraseña" name="pwd"><br>
+        <input type="email" placeholder="correu" name="correu"><br>
+        <select name="rol">
+            <option value=""></option>
+            <option value="administrador">administrador</option>
+            <option value="gestor">gestor</option>
+            <option value="cliente">cliente</option>
+        </select>        
+        <button type="submit" name="enviar">Enviar</button>
+    </form>
+</body>
+</html>
