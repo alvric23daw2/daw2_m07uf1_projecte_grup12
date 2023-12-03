@@ -1,5 +1,0 @@
-alvaro;alvaro-rg@hotmail.com;$2y$10$LfkNwOLZBFaYJXvgV9pUB.TT2aj/weRdCslMwpyIFEpOsEwjsVtwO
-Usuario1;usuario1@example.com;$2y$10$hashed_password1
-Usuario2;usuario2@example.com;$2y$10$hashed_password2
-administrador;administrador@fje.net;$2y$10$It49x1mLlF8Rbl2VSR3TReL2fYqQ4yqfX79dEJgyQgM8Dzm.houFi
-gestor;gestor@fje.net;$2y$10$It49x1mLlF8Rbl2VSR3TReL2fYqQ4yqfX79dEJgyQgM8Dzm.houFi
