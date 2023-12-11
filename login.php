@@ -9,8 +9,16 @@
     <form action="verificar_login.php" method="post">
         Correo: <input type="email" name="correo" required><br>
         Contraseña: <input type="password" name="contrasena" required><br>
+        <select name="rol" required>
+            <option value=""></option>
+            <option value="admin">Admin</option>
+            <option value="gestor">Gestor</option>
+            <option value="cliente">Cliente</option>
+        </select><br>
+
         <input type="submit" value="Iniciar Sesión">
     </form>
+    <br>
+    <a href="index.php">Volver a la página principal</a><br>
 </body>
 </html>
-

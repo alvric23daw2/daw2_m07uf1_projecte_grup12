@@ -7,6 +7,6 @@
 <body>
     <h1>Bienvenido a la Tienda Online</h1>
     <a href="login.php">Iniciar Sesión</a>
-    <a href="registro.php">Crear cuenta</a>
+    <a href="informacion_basica.php">Informacion sobre la pagina</a>
 </body>
 </html>

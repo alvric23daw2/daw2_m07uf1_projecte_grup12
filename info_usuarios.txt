@@ -1,5 +1,4 @@
-alvaro;alvaro-rg@hotmail.com;$2y$10$LfkNwOLZBFaYJXvgV9pUB.TT2aj/weRdCslMwpyIFEpOsEwjsVtwO
-Usuario1;usuario1@example.com;$2y$10$hashed_password1
-Usuario2;usuario2@example.com;$2y$10$hashed_password2
-administrador;administrador@fje.net;$2y$10$It49x1mLlF8Rbl2VSR3TReL2fYqQ4yqfX79dEJgyQgM8Dzm.houFi
-gestor;gestor@fje.net;$2y$10$It49x1mLlF8Rbl2VSR3TReL2fYqQ4yqfX79dEJgyQgM8Dzm.houFi
+Nombre: Alfredo, Correo: 123@1232, Contraseña: $2y$10$8ODSD98DyqI8AAf72ghuueAOSchTTg.Z8AD8UtnA0F3W4JesMpRYa, Rol: gestor
+Nombre: juanca, Correo: admin@edu, Contraseña: $2y$10$WNwNI4xmVZqn.9QdKbsxU.UJzNZ2e//tRsLgr6tl6NnuWgT6CrEpu, Rol: admin
+Nombre: David, Correo: 123@123, Contraseña: $2y$10$GXYLuXcXDHACoFBfT6ZZNOkX6b5XlfUmeR8KLm46wA8Lg02BhyHRe, Rol: cliente
+Nombre: Alberto, Correo: Alber@to, Contraseña: $2y$10$JY4BvKmhOZsJEcDx4Mbyfu80QuoHlWBgsxik/1JbidOLokPgk3Pve, Rol: gestor

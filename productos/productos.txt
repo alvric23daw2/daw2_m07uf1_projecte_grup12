@@ -1,0 +1,2 @@
+{"id":"12","nombre":"Geltrudis","imagen":"IMATGES\/img1.jpg","precio":"200","iva":"4","disponibilidad":"3"}
+{"id":"gime","nombre":"na","imagen":"IMATGES\/img2.jpg","precio":"2","iva":"99","disponibilidad":"2"}
