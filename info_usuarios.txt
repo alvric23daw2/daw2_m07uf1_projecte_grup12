@@ -1,4 +1,8 @@
 Nombre: Alfredo, Correo: 123@1232, Contraseña: $2y$10$8ODSD98DyqI8AAf72ghuueAOSchTTg.Z8AD8UtnA0F3W4JesMpRYa, Rol: gestor
 Nombre: juanca, Correo: admin@edu, Contraseña: $2y$10$WNwNI4xmVZqn.9QdKbsxU.UJzNZ2e//tRsLgr6tl6NnuWgT6CrEpu, Rol: admin
 Nombre: David, Correo: 123@123, Contraseña: $2y$10$GXYLuXcXDHACoFBfT6ZZNOkX6b5XlfUmeR8KLm46wA8Lg02BhyHRe, Rol: cliente
-Nombre: Alberto, Correo: Alber@to, Contraseña: $2y$10$JY4BvKmhOZsJEcDx4Mbyfu80QuoHlWBgsxik/1JbidOLokPgk3Pve, Rol: gestor
+Nombre: Alberto, Correo: Alber@to, Contraseña: $2y$10$JY4BvKmhOZsJEcDx4Mbyfu80QuoHlWBgsxik/1JbidOLokPgk3Pve, Rol: gestorNombre: Geremias, Correo: gestor@ge, Contraseña: $2y$10$aqjeUGZ6QTqs5B/hPFrV5upM1ef0k7K1FPSorUXWG36AAjNangAae, Rol: gestor
+Nombre: Geremias, Correo: gestor@ge, Contraseña: $2y$10$TgvDwvEiR/bSmaEvLpvayusgBqRhFw5MC26sfZdToJylu/iJHOPSi, Rol: gestor
+Nombre: kl, Correo: ll@iu, Contraseña: $2y$10$XAjNvTCP8nu0SNPDtK2lIOvZbpOQnsMAvPboyuTAOHDVfm7r6o4EG, Rol: cliente
+Nombre: Clemente, Correo: cliente@cli, Contraseña: $2y$10$d.JziHIyOSkYnpc/E4uRpOezNXPCxjWhJD78.pQ7iHG4vRhHvAPAC, Rol: cliente
+Nombre: Cliente2, Correo: clemente@cle, Contraseña: $2y$10$SRj2gKHjm.p4wTYHzVmVJ.DJsRkA.h5b4zkehfzknvm4neUD3Y48q, Rol: cliente

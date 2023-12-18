@@ -1,65 +1,33 @@
 <?php
-session_start();
+$archivo_cesta = "cesta/cesta.txt";
 
-function formato_num($numero) {
-    return number_format($numero, 2);
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['eliminar'])) {
+        $id_eliminar = $_POST['eliminar'];
 
-function mostrarCesta() {
-    $totalPrecio = 0;
-    $totalIva = 0;
-    $totalProductos = 0;
+        $cesta_contenido = file($archivo_cesta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-    if (isset($_SESSION['cesta'])) {
-        foreach ($_SESSION['cesta'] as $producto) {
-            echo '<div>';
-            echo '<img src="' . $producto['imagen'] . '" alt="' . $producto['nombre'] . '" style="width: 50px; height: 50px;">';
-            echo '<p>Nombre: ' . $producto['nombre'] . '</p>';
-            echo '<p>Precio: $' . formato_num($producto['precio']) . '</p>';
-            echo '<p>Cantidad: ' . $producto['cantidad'] . '</p>';
-            echo '<a href="?eliminar=' . $producto['id'] . '">Eliminar</a>';
-            echo '</div>';
+        $nueva_cesta_contenido = "";
 
-            $totalProductos += $producto['cantidad'];
-            $totalPrecio += $producto['precio'] * $producto['cantidad'];
-            $totalIva += $producto['precio'] * $producto['cantidad'] * ($producto['iva'] / 100);
-        }
-    } else {
-        echo '<p>La cesta está vacía.</p>';
-    }
+        foreach ($cesta_contenido as $producto_en_cesta) {
+            list($id, $nombre, $imagen, $precio, $cantidad) = explode(":", $producto_en_cesta);
 
-    $precioSinIva = $totalPrecio - $totalIva;
-
-    echo '<p>Cantidad de productos: ' . $totalProductos . '</p>';
-    echo '<p>Total del precio: $' . formato_num($totalPrecio) . '</p>';
-    echo '<p>Total del IVA: $' . formato_num($totalIva) . '</p>';
-    echo '<p>Total del precio sin IVA: $' . formato_num($precioSinIva) . '</p>';
-}
-
-function eliminarDeCesta($idEliminar) {
-    if (!empty($_SESSION['cesta'])) {
-        foreach ($_SESSION['cesta'] as $key => $producto) {
-            if ($producto['id'] === $idEliminar) {
-                unset($_SESSION['cesta'][$key]);
-                break;
+            if ($id != $id_eliminar) {
+                $nueva_cesta_contenido .= "$id:$nombre:$imagen:$precio:$cantidad\n";
             }
         }
+        file_put_contents($archivo_cesta, $nueva_cesta_contenido);
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['eliminar'])) {
-    eliminarDeCesta($_GET['eliminar']);
-}
-
-if (isset($_SESSION['cesta'])) {
-    $cestaPath = 'Cesta/cesta.txt';
-    $contenido = '';
-
-    foreach ($_SESSION['cesta'] as $producto) {
-        $contenido .= 'Nombre: ' . $producto['nombre'] . ', Precio: $' . formato_num($producto['precio']) . ', Cantidad: ' . $producto['cantidad'] . "\n";
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['tramitar'])) {
+    $correo = $_GET['correo'];
+    $carpeta_cesta = "cesta/$correo";
+    if (!file_exists($carpeta_cesta)) {
+        mkdir($carpeta_cesta);
     }
-
-    file_put_contents($cestaPath, $contenido);
+    copy($archivo_cesta, "$carpeta_cesta/cesta_usuario.txt");
+    file_put_contents($archivo_cesta, "");
 }
 ?>
 
@@ -67,21 +35,49 @@ if (isset($_SESSION['cesta'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cesta de Compra</title>
     <style>
-        body {
-            margin: 20px;
+        .producto {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
         }
 
+        .producto img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-    <h1>Cesta de Compra</h1>
+    <h2>Cesta de Compra</h2>
+    <?php
+    $cesta_contenido = file($archivo_cesta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-    <?php mostrarCesta(); ?>
-
-    <p><a href="carrito.php">Volver al Carrito</a></p>
-    <a href="logout.php">Cerrar sesion</a>
+    foreach ($cesta_contenido as $producto_en_cesta) {
+        list($id, $nombre, $imagen, $precio, $cantidad) = explode(":", $producto_en_cesta);
+        ?>
+        <div class="producto">
+            <img src="<?php echo $imagen; ?>" alt="<?php echo $nombre; ?>">
+            <p><strong><?php echo $nombre; ?></strong></p>
+            <p>Precio: <?php echo $precio; ?></p>
+            <p>Cantidad: <?php echo $cantidad; ?></p>
+            <form method="post" action="">
+                <input type="hidden" name="eliminar" value="<?php echo $id; ?>">
+                <input type="submit" value="Eliminar">
+            </form>
+        </div>
+        <?php
+    }
+    ?>
+    <form method="get" action="">
+        <label for="correo">Correo:</label>
+        <input type="text" id="correo" name="correo" required>
+        <input type="submit" name="tramitar" value="Tramitar mis productos">
+    </form>
+    <a href='lista_productos.php'>Productos</a>
+    <a href='login.php'>Iniciar Sesión</a>
 </body>
 </html>

@@ -56,7 +56,7 @@ if ($hash_guardado !== null && password_verify($contrasena, $hash_guardado)) {
         }
         if ($rol === 'gestor'){
             echo "<li><a href='registro1.php'>Crear cuenta</a></li>";
-            echo "<li><a href='gestion_productos.php'>Gestion proctos</a></li>";
+            echo "<li><a href='gestionar_productos.php'>Gestion productos</a></li>";
         }
         if ($rol === 'admin'){
             echo "<li><a href='registro2.php'>Crear cuenta</a></li>";
@@ -68,7 +68,7 @@ if ($hash_guardado !== null && password_verify($contrasena, $hash_guardado)) {
             echo "<input type='submit' value='Eliminar Usuario'>";
             echo "</form>";
         }
-        echo "<li><a href='carrito.php'>Carrito</a></li>";
+        echo "<li><a href='lista_productos.php'>Lista de Productos</a></li>";
         echo "</ul>";
         echo "<br>";
         echo "<a href='logout.php'>Logout</a>";
